@@ -1,0 +1,31 @@
+%layout 'default';
+%title 'TweetLiker';
+
+<% if (defined session 'id'){ %>
+<div class="span12 pagination-centered">
+  
+<h2> <%=l 'Hola' %> <%= session 'screen_name' %> </h2>
+<p> <%=l 'Aquí comienza la búsqueda de Tweets a socializar' %> </p>
+<p> <%=l 'Introduce un nombre y ¡comparte tus favoritos!' %>
+<form method="post" action="<%= Host %><%= url_for('show') %>">
+  <div>
+    <input type="text" name="username">
+  </div>
+  <div>
+    <input type="submit" value="Search">
+  </div>
+</form>
+</div>
+<% } else { %>
+
+<h2> <%=l 'Bienvenido!'%> </h2>
+<p class="lead"> <%=l 'Bienvenido a TweetLike, la aplicación web que convertirá tus Tweets en un evento social.' %>
+</p>
+<p class="text-info">
+  <%=l 'Mediante TweetLike podrás compartir los tweets que más te gusten con tus amigos mediante la conocida tecnología de like de Facebook' %>
+</p>
+<p>
+  <%=l 'Si te gusta la aplicación por favor tómate un minuto y dona algún € para que podamos mantener el sitio en pie' %>
+</p>
+<% } %>
+

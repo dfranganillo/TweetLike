@@ -1,0 +1,69 @@
+%layout 'default';
+%title 'TweetLiker';
+
+<head>
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/embed.css"/>
+</head>
+
+<div class="span12 pagination-centered">
+  <h2><%=l 'Timeline del usuario' %></h2>
+</div>
+
+
+<% foreach my $status (@$timeline) { %>
+<% my $retweet=(defined $status->{retweeted_status}?1:0);
+my $screen_name;
+my $name;
+my $profile_image_url;
+my $text;
+if ($retweet == 1)
+{
+$screen_name = $status->{retweeted_status}{user}{screen_name};
+$name = $status->{retweeted_status}{user}{name};
+$profile_image_url = $status->{retweeted_status}{user}{profile_image_url};
+$text = $status->{retweeted_status}{text};
+}
+else
+{
+$screen_name = $status->{user}{screen_name};
+$name = $status->{user}{name};
+$profile_image_url = $status->{user}{profile_image_url};
+$text = $status->{text};
+}
+my $link = "http://twitter.com/".$status->{user}{screen_name}."/status/".$status->{id_str};
+%>
+
+<div class="twitter-tweet-rendered tw-align-center" >
+  <div class="twt-border">
+    <blockquote class="twt-o twt-tweet" lang=<%= session 'lang' %> >
+    <div class="vcard author">
+      <a class="screen-name url" href="https://twitter.com/<%= $screen_name %>">
+         <span class="avatar">
+           <img class="photo" alt="" src="<%= $profile_image_url %>">
+         </span>
+         <span class="fn"> <%= $name %> </span>
+         <span class="nickname">@<b><%= $screen_name %></b></span>
+      </a>
+    </div>
+    <div class="entry-content">
+      <p class="entry-title">
+         <%== $text %>
+      </p>
+    </div>
+    <div class="footer">
+      <a class="view-details" href="<%= $link %>">
+         <%= $status->{created_at} %>
+      </a>
+    </div>
+  </blockquote>
+    <!-- AddThis Button BEGIN -->
+    <div class="addthis_toolbox addthis_default_style " >
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count" addthis:url="<%= $link %>"> </a>
+    </div>
+    <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-501ff5d12a9168fe"></script>
+    <!-- AddThis Button END -->
+  </div>
+</div>
+<% } %>					    
+

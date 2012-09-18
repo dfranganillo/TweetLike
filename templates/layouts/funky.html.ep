@@ -1,0 +1,4 @@
+<!doctype html><html>
+          <head><title>OAuth TEST!</title></head>
+          <body><%== content %></body>
+</html>
