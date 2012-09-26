@@ -27,7 +27,11 @@ sqlite3 users.db < script/db.sql
 Running
 -------
 
-Just run morbo script/TweetLike and try for yourself
+Just run morbo script/TweetLike and try for yourself.
+
+The app will be located on localhost:3000
+
+For other deployment configurations see Mojolicious guides.
 
 License
 -------
