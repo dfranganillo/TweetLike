@@ -37,7 +37,7 @@ License
 -------
 GPL3
 
-Copyright 2012 - Sergio Conde < skgsergio [at] gmail [dot] com >
+Copyright 2012 - Daniel Franganillo < dfranganillo [at] gmail [dot] com >
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
